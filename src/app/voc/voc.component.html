@@ -1,0 +1,160 @@
+<div class="size">
+  <form [formGroup]="voc">
+    <div class="header">
+      <h2 class="header-survey">Survey Questions</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12 center txt-red">
+        This is a preview, NO results will be recorded.
+      </div>
+      <br>
+    </div>
+    <br>
+    <br>
+    <div *ngIf="start">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <h3>How are we doing?</h3>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          Thank you for agreeing to participate. In order to continuously improve our products and our service, we would
+          like to invite you to take a few minutes to answer some questions. Your answers will be treated confidentially
+          and will help us to better meet your wishes. Thank you in advance for your participation and feedback.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 center">
+          <button class="btn btn-blue" (click)="onStart()">Start</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 center">
+          Powered by <a href="#" class="link">M4PL</a>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="first">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <span class="txt-red">*</span> How likely are you to recommend our products/services to a colleague, friend or
+          family member?
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+          <span class="low-rating">Not at all likely</span>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6 ">
+          <span class="high-rating pull-right">Extremely likely</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <table>
+            <tr>
+              <td><button class="btn btn-rating">0</button></td>
+
+              <td><button class="btn btn-rating">1</button></td>
+
+              <td><button class="btn btn-rating">2</button></td>
+
+              <td><button class="btn btn-rating">3</button></td>
+
+              <td><button class="btn btn-rating">4</button></td>
+
+              <td><button class="btn btn-rating">5</button></td>
+
+              <td><button class="btn btn-rating">6</button></td>
+
+              <td><button class="btn btn-rating">7</button></td>
+
+              <td><button class="btn btn-rating">8</button></td>
+
+              <td><button class="btn btn-rating">9</button></td>
+
+              <td><button class="btn btn-rating">10</button></td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="second">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <b>You rated us 6 out of 10.</b>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <b>What improvements could we make to bring your rating closer to 10?</b>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <textarea matInput formControlName="improvements" matTextareaAutosize matAutosizeMinRows=1 matAutosizeMaxRows=5></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="third">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <b><span class="txt-red">*</span> Gender</b>
+        </div>
+      </div>
+      <mat-radio-group aria-label="Select an option">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <mat-radio-button value="1">Male</mat-radio-button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <mat-radio-button value="2">Female</mat-radio-button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <mat-radio-button value="3">Other</mat-radio-button>
+          </div>
+        </div>
+      </mat-radio-group>
+    </div>
+
+    <div *ngIf="fourth">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <h3>Your responses have been registered!</h3>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          Thank you for taking the time to complete the survey. Your answers are important for us and provide valuable
+          input for the evaluation and furthur improvement of our products and service.
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row" *ngIf="five">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+        <button class="btn btn-back" (click)="onBack()">Back</button>
+        <button class="btn btn-next" (click)="onNext()">{{buttonName}}</button>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+        <mat-progress-bar mode="determinate" value="progressbarValue" class="pull-right"></mat-progress-bar>
+      </div>
+    </div>
+
+  </form>
+</div>
