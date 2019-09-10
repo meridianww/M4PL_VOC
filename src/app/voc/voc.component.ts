@@ -17,7 +17,6 @@ export class VocComponent implements OnInit {
   public fourth = false;
   public five = false;
   public progressbarValue = 0;
-  public curSec = 0;
   public buttonName: string;
 
   constructor(private formBuilder: FormBuilder) { }
@@ -62,30 +61,17 @@ export class VocComponent implements OnInit {
       this.start = true;
     } else if (this.count === 1) {
       this.first = true;
-      this.startTimer(100);
+      this.progressbarValue = 30;
     } else if (this.count === 2) {
       this.second = true;
-      this.startTimer(60);
+      this.progressbarValue = 70;
     } else if (this.count === 3) {
       this.third = true;
       this.buttonName = 'Submit';
-      this.startTimer(30);
+      this.progressbarValue = 100;
     } else if (this.count === 4) {
       this.fourth = true;
       this.five = false;
     }
-  }
-  startTimer(seconds: number) {
-    const time = seconds;
-    const timer$ = interval(1000);
-
-    const sub = timer$.subscribe((sec) => {
-      this.progressbarValue = 100 - sec * 100 / seconds;
-      this.curSec = sec;
-
-      if (this.curSec === seconds) {
-        sub.unsubscribe();
-      }
-    });
   }
 }
