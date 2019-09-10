@@ -20,18 +20,18 @@
 }
 
 .txt-red {
-    color:red;
+    color: red;
     font-size: 12px;
 }
 
 .low-rating {
-    color:red;
+    color: red;
     text-align: left;
     font-weight: bold;
 }
 
 .high-rating {
-    color:green;
+    color: green;
     font-weight: bold;
 }
 
@@ -64,11 +64,53 @@ textarea {
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-    .header-survey{
-       font-size:24px !important;
+    .header-survey {
+        font-size: 24px !important;
     }
- }
+}
 
- .btn:focus{
+.btn:focus {
     background: #4b8efa;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .header-survey {
+        font-size: 22px !important;
+    }
+    .btn-blue,
+    .btn-next,
+    .btn-back,
+    .btn-rating {
+        padding: 5px 20px !important;
+    }
+    .prog-bar {
+        top: 30px;
+    }
+    .table-rating {
+        overflow-x: scroll;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .header-survey {
+        font-size: 22px !important;
+    }
+    .btn-blue,
+    .btn-next,
+    .btn-back,
+    .btn-rating {
+        padding: 5px 22px !important;
+    }
+    .table-rating {
+        overflow-x: scroll;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1366px) {
+    .btn-blue,
+    .btn-next,
+    .btn-back,
+    .btn-rating {
+        padding: 5px 30px !important;
+    }
 }
