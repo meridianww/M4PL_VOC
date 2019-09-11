@@ -44,53 +44,15 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                    <span class="low-rating">Not at all likely</span>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-6 ">
-                    <span class="high-rating pull-right">Extremely likely</span>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12 table-rating">
-                    <table>
-                        <tr>
-                            <td><button class="btn btn-rating">0</button></td>
-
-                            <td><button class="btn btn-rating">1</button></td>
-
-                            <td><button class="btn btn-rating">2</button></td>
-
-                            <td><button class="btn btn-rating">3</button></td>
-
-                            <td><button class="btn btn-rating">4</button></td>
-
-                            <td><button class="btn btn-rating">5</button></td>
-
-                            <td><button class="btn btn-rating">6</button></td>
-
-                            <td><button class="btn btn-rating">7</button></td>
-
-                            <td><button class="btn btn-rating">8</button></td>
-
-                            <td><button class="btn btn-rating">9</button></td>
-
-                            <td><button class="btn btn-rating">10</button></td>
-                        </tr>
-
-                    </table>
+                    <app-rating-star max=10 (onRating)=onRating($event)></app-rating-star>
                 </div>
             </div>
         </div>
         <div *ngIf="second">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <b>You rated us 6 out of 10.</b>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <b>What improvements could we make to bring your rating closer to 10?</b>
+                    <b>You have rated us 6 out of 10.</b>
                 </div>
             </div>
             <br>

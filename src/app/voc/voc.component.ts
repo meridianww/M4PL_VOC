@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { interval } from 'rxjs';
 
@@ -18,6 +18,9 @@ export class VocComponent implements OnInit {
   public five = false;
   public progressbarValue = 0;
   public buttonName: string;
+  public questionType: string;
+  public Selected = '';
+  public isSelected = false;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -73,5 +76,8 @@ export class VocComponent implements OnInit {
       this.fourth = true;
       this.five = false;
     }
+  }
+  onRating(rating: number) {
+    console.log(rating);
   }
 }

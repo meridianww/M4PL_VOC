@@ -5,6 +5,7 @@ import { VocComponent } from './voc/voc.component';
 
 
 const routes: Routes = [
+  { path: '', component: VocComponent },
   { path: routeValues.voc, component: VocComponent },
 ];
 

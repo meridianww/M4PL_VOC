@@ -69,9 +69,10 @@ textarea {
     }
 }
 
-.btn:focus {
+
+/* .btn:focus {
     background: #4b8efa;
-}
+} */
 
 @media (min-width: 320px) and (max-width: 767px) {
     .header-survey {

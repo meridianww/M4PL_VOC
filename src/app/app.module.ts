@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VocComponent } from './voc/voc.component';
 import { from } from 'rxjs';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { StarRatingModule } from 'angular-star-rating';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {
   MatInputModule,
   MatSelectModule,
@@ -28,14 +29,15 @@ import {
   MatButtonModule,
   MatAutocompleteModule,
   MatRadioModule,
-  
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { RatingStarComponent } from './rating-star/rating-star.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VocComponent
+    VocComponent,
+    RatingStarComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatProgressBarModule,
     MatRadioModule,
+    StarRatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

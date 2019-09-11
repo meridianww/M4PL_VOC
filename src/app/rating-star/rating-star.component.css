@@ -1,0 +1,15 @@
+.icon {
+    display: inline-block;
+    margin-right: 3px;
+    cursor: pointer;
+    color: #ccc;
+    width: 7%;
+}
+
+.icon:hover {
+    color: #006dcc;
+}
+
+.filled {
+    color: #006dcc;
+}
