@@ -4,8 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VocComponent } from './voc/voc.component';
-import { from } from 'rxjs';
+import { VocComponent } from './voc/voc.component'; 
 import { StarRatingModule } from 'angular-star-rating';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {
@@ -30,8 +29,11 @@ import {
   MatAutocompleteModule,
   MatRadioModule,
 } from '@angular/material';
+
 import { HttpClientModule } from '@angular/common/http';
-import { RatingStarComponent } from './rating-star/rating-star.component';
+import { RatingStarComponent } from './rating-star/rating-star.component'; 
+import { VOCService } from './voc/voc.service';
+import { HttpWrapper } from './utility/httpWrapper';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,10 @@ import { RatingStarComponent } from './rating-star/rating-star.component';
     MatRadioModule,
     StarRatingModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    HttpWrapper,
+    VOCService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

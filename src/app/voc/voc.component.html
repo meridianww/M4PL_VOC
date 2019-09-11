@@ -1,7 +1,9 @@
 <div class="size">
     <form [formGroup]="voc">
         <div class="header">
-            <h2 class="header-survey">Survey Questions</h2>
+            <h2 class="header-survey"> {{showTitle}}
+                <!-- Survey Questions -->
+            </h2>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12 center txt-red">
@@ -39,20 +41,21 @@
         <div *ngIf="first">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <span class="txt-red">*</span> How likely are you to recommend our products/services to a colleague, friend or family member?
+                    <span class="txt-red">*</span>{{vocList[0].Title}}
                 </div>
             </div>
             <br>
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12 table-rating">
-                    <app-rating-star max=10 (onRating)=onRating($event)></app-rating-star>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <app-rating-star [max]='rangeValue' (onRating)=onRating($event)></app-rating-star>
                 </div>
             </div>
         </div>
         <div *ngIf="second">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <b>You have rated us 6 out of 10.</b>
+                    {{vocList[0].Title}}
+                    <!-- <b>You have rated us {{rating}} out of {{vocList[0].EndRange}}.</b> -->
                 </div>
             </div>
             <br>
@@ -66,23 +69,18 @@
         <div *ngIf="third">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <b><span class="txt-red">*</span> Gender</b>
+                    <b><span class="txt-red">*</span> {{vocList[0].Title}}</b>
                 </div>
             </div>
             <mat-radio-group aria-label="Select an option">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <mat-radio-button value="1">Male</mat-radio-button>
+                        <mat-radio-button value="1">{{vocList[0].AgreeText}}</mat-radio-button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <mat-radio-button value="2">Female</mat-radio-button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <mat-radio-button value="3">Other</mat-radio-button>
+                        <mat-radio-button value="2">{{vocList[0].DisAgreeText}}</mat-radio-button>
                     </div>
                 </div>
             </mat-radio-group>
