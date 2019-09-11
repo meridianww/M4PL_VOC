@@ -104,12 +104,13 @@
         <br>
 
         <div class="row" *ngIf="five">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+            
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 prog-bar">
+                <mat-progress-bar mode="Determinate" [value]="progressbarValue" class="pull-right"></mat-progress-bar>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                 <button class="btn btn-back" (click)="onBack()">Back</button>
                 <button class="btn btn-next" (click)="onNext()">{{buttonName}}</button>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-12 prog-bar">
-                <mat-progress-bar mode="Determinate" [value]="progressbarValue" class="pull-right"></mat-progress-bar>
             </div>
         </div>
 
