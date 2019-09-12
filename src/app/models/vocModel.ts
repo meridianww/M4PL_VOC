@@ -10,4 +10,5 @@ export class VOCModel {
     public AgreeTextId: number;
     public DisAgreeText: string;
     public DisAgreeTextId: string;
+    public SelectedAnswer: string;
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    baseURL: 'http://localhost/M4PL.API/api/'
+    baseURL: 'http://localhost:2495/api/'
 };
 
 /*

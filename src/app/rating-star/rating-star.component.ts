@@ -23,10 +23,17 @@ export class RatingStarComponent {
     for (let i = 0; i < this.max; i++) {
       this.maxItem.push(i + 1);
     }
+
+    if (this.ratedCount === 0) {
+      const rating = localStorage.getItem('rating');
+      if (rating !== undefined && rating !== null) {
+        // tslint:disable-next-line: radix
+        this.ratedCount = parseInt(rating);
+      }
+    }
   }
   toggleRating(s: number) {
     this.ratedCount = s;
     this.onRating.emit(this.ratedCount);
   }
-
 }

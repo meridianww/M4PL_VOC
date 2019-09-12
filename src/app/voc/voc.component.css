@@ -21,7 +21,7 @@
 
 .txt-red {
     color: red;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .low-rating {
@@ -66,7 +66,6 @@ textarea {
 .mat-progress-bar {
     height: 35px;
 }
-
 
 @media (min-width: 320px) and (max-width: 480px) {
     .header-survey {
@@ -122,4 +121,32 @@ textarea {
     .btn-rating {
         padding: 5px 30px !important;
     }
+}
+
+.tp-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.tp-radio-button {
+    margin: 5px;
+}
+
+.tp-selected-value {
+    margin: 15px 0;
+}
+
+.radio-margin {
+    margin-left: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.tag_color {
+    -webkit-text-stroke: 1px transparent !important;
+    color: #000000 !important;
+    font-size: 15px !important;
+    font-variant: small-caps !important;
 }
