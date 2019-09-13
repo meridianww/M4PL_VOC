@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseURL: 'http://localhost/M4PL.API/api/'
+  baseURL: 'http://172.30.255.53:2452/api/'
 };

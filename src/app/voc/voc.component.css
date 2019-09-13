@@ -150,3 +150,25 @@ textarea {
     font-size: 15px !important;
     font-variant: small-caps !important;
 }
+
+.btn-close {
+    top: 50%;
+    background-color: #4b8efa;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    padding: 10px 30px;
+    color: white;
+}
+
+.no-information {
+    top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    padding: 10px 30px;
+}

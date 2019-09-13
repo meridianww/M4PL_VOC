@@ -7,6 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class RatingStarComponent {
   @Input() max: number;
+  // @Input() isRating: boolean;
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onRating = new EventEmitter<Number>();
 

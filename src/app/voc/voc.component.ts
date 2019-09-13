@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { interval } from 'rxjs';
 import { VOCModel } from '../models/vocModel';
 import { VOCService } from './voc.service';
 import { SurveyUserModel } from '../models/surveyUserModel';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-voc',
@@ -29,11 +28,14 @@ export class VocComponent implements OnInit {
   public rdrSelection: string;
   public result: string;
   public isSubmitted = false;
+  public jobId: string;
+  public vocAllStar: false;
+  public noInformation = false;
 
 
   @HostListener('window:unload', ['$event'])
   unloadHandler(event) {
-
+    console.log(event);
   }
 
   @HostListener('window:beforeunload', ['$event'])
@@ -44,11 +46,12 @@ export class VocComponent implements OnInit {
     }
   }
   // Constructor
-  constructor(private formBuilder: FormBuilder, private vocService: VOCService) {
+  constructor(private formBuilder: FormBuilder, private vocService: VOCService, private route: ActivatedRoute) {
   }
 
   // Oninit events
   ngOnInit() {
+    this.jobId = this.route.snapshot.queryParams['jobid'];
     localStorage.removeItem('rating');
     this.start = true;
     this.buttonName = 'Next >>';
@@ -57,16 +60,27 @@ export class VocComponent implements OnInit {
       improvements: [''],
       rdrSelection: ['']
     });
-    this.getVOCRecords(1410);
   }
   // Get VOC Records for survey
   getVOCRecords(jobId: number) {
     // tslint:disable-next-line: one-variable-per-declaration
     const success = (res) => {
-      this.tempVoiceList = res.Results[0].JobSurveyQuestions;
-      this.showTitle = res.Results[0].SurveyTitle;
-      this.surveyId = res.Results[0].SurveyId;
-    }, fail = () => {
+      if (res.Results[0] === null) {
+        this.noInformation = true;
+        this.start = false;
+        this.thankYouPage = false;
+        this.butonGroup = false;
+        this.feddbackForm = false;
+        this.dynamicOperation = false;
+      } else {
+        this.tempVoiceList = res.Results[0].JobSurveyQuestions;
+        this.showTitle = res.Results[0].SurveyTitle;
+        this.surveyId = res.Results[0].SurveyId;
+        this.vocAllStar = res.Results[0].VocAllStar;
+      }
+
+    }, fail = (err) => {
+      console.log(err);
     };
     this.vocService.getVOCRecords(jobId, success, fail);
   }
@@ -80,6 +94,11 @@ export class VocComponent implements OnInit {
     this.butonGroup = true;
     this.thankYouPage = false;
     this.dynamicOperation = true;
+    if (this.jobId !== null) {
+      // tslint:disable-next-line: radix   
+      this.getVOCRecords(parseInt(this.jobId));
+    }
+    // this.getVOCRecords(1410);
   }
   // Back button click event
   onBack() {
@@ -139,7 +158,8 @@ export class VocComponent implements OnInit {
       'Name': null,
       'Age': null,
       'GenderId': null,
-      'EntityTypeId': 1410,
+      // tslint:disable-next-line: radix
+      'EntityTypeId': parseInt(this.jobId),
       'EntityType': 'Job',
       'UserId': null,
       'SurveyId': null,
@@ -192,7 +212,11 @@ export class VocComponent implements OnInit {
     }, fail = (err) => {
       console.log(err);
     };
-
     this.vocService.updateFeedback(postData, success, fail);
   }
+
+  // windowClose() {
+  //   window.open('', '_parent', '');
+  //   window.close();
+  // }
 }
