@@ -16,4 +16,7 @@ export class VOCService {
     createJobSurvey(postData: any, success: (resp) => void, fail: (err) => void): Subscription {
         return this.httpWrapper.genericHttpPost(postData, 'Survey/job', success, fail);
     }
+    updateFeedback(postData: any, success: (resp) => void, fail: (err) => void): Subscription {
+        return this.httpWrapper.genericHttpPut(postData, 'SurveyUser', success, fail);
+    }
 }

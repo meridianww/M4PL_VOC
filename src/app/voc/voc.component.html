@@ -2,7 +2,6 @@
     <form [formGroup]="voc">
         <div class="header">
             <h2 class="header-survey"> {{showTitle}}
-                <!-- Survey Questions -->
             </h2>
         </div>
         <div class="row">
@@ -45,51 +44,77 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="dynamicOperation">
+            <div *ngFor="let item of tempVoiceList; let i=index;">
+                <div *ngIf="item.QuestionTypeIdName === 'Yes/No' && currentSelectedQuestion === i">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
+                        </div>
+                    </div>
+                    <br>
 
-        <div *ngIf="first">
+                    <label>
+                        <input type="radio" value="item.AgreeTextId" formControlName="rdrSelection">
+                        <span>{{item.AgreeText}}</span>
+                    </label>
+                    <label>
+                        <input type="radio" value="item.DisAgreeTextId" formControlName="rdrSelection"
+                            class="radio-margin">
+                        <span> {{item.DisAgreeText}}</span>
+                    </label>
+                    <!-- <mat-radio-group aria-label="Select an option" [(ngModel)]="rdrSelection" [ngModelOptions]="{standalone: true}">
+                        <mat-radio-button [value]="item.AgreeTextId">{{item.AgreeText}}
+                        </mat-radio-button>
+                        <mat-radio-button [value]="item.DisAgreeTextId" class="radio-margin">
+                            {{item.DisAgreeText}}
+                        </mat-radio-button>
+                    </mat-radio-group> -->
+                </div>
+                <div *ngIf="item.QuestionTypeIdName === 'Range' && currentSelectedQuestion === i">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <app-rating-star [max]='item.EndRange' (onRating)=onRating($event)></app-rating-star>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="item.QuestionTypeIdName === 'Key-In' && currentSelectedQuestion === i">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <textarea matInput formControlName="improvements" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="feddbackForm">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <b><span class="txt-red">Q.</span> {{vocList[0].Title}}</b>
+                    <b><span class="txt-red">Q{{currentSelectedQuestion + 1}}.</span> Do you have any comments?
+                    </b>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <app-rating-star [max]='rangeValue' (onRating)=onRating($event)></app-rating-star>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="second">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <b><span class="txt-red">Q.</span> {{vocList[0].Title}}</b>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <textarea matInput formControlName="improvements" rows="5"></textarea>
+                    <textarea matInput formControlName="userFeedback" rows="5"></textarea>
                 </div>
             </div>
         </div>
 
-        <div *ngIf="third">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <b><span class="txt-red">Q.</span> {{vocList[0].Title}}</b>
-                </div>
-            </div>
-            <br>
-            <mat-radio-group aria-label="Select an option" [(ngModel)]="rdrSelection" [ngModelOptions]="{standalone: true}">
-                <mat-radio-button [value]="vocList[0].AgreeTextId">{{vocList[0].AgreeText}}
-                </mat-radio-button>
-                <mat-radio-button [value]="vocList[0].DisAgreeTextId" class="radio-margin">
-                    {{vocList[0].DisAgreeText}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-
-        <div *ngIf="fourth">
+        <div *ngIf="thankYouPage">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                     <h2 class="header-survey">Your responses have been registered!</h2>
@@ -101,12 +126,17 @@
                     Thank you for taking the time to complete the survey. Your answers are important for us and provide valuable input for the evaluation and furthur improvement of our products and service.
                 </div>
             </div>
+            <br>
+            <br>
+            <div class="row">
+                <button class="btn btn-next" (click)="onNext()">Close</button>
+            </div>
         </div>
 
         <br>
         <br>
 
-        <div class="row" *ngIf="five">
+        <div class="row" *ngIf="butonGroup">
 
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 prog-bar">
                 <mat-progress-bar mode="Determinate" [value]="progressbarValue" class="pull-right"></mat-progress-bar>
