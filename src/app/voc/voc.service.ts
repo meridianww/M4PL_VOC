@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 export class VOCService {
     constructor(private httpWrapper: HttpWrapper) { }
 
-    getVOCRecords(jobId: number, success: (resp) => void, fail: (err) => void): Subscription {
+    getVOCRecords(jobId: string, success: (resp) => void, fail: (err) => void): Subscription {
         return this.httpWrapper.genericHttpGet('Survey/' + jobId + '/job', success, fail);
     }
 

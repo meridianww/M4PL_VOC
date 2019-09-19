@@ -19,7 +19,6 @@ export class HttpWrapper {
     public genericHttpGet(destinationUrl: string, success: (response: any) => void, fail: (err: any) => void): Subscription {
         let headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
-
         const httpOptions = { headers: headers };
 
         return this.httpClientModule.get(this.baseURL + destinationUrl, httpOptions).subscribe(response => {
@@ -44,7 +43,6 @@ export class HttpWrapper {
 
         let headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
-
         const httpOptions = { headers: headers };
         postData = postData !== null ? postData : null;
         return this.httpClientModule.post(this.baseURL + destinationUrl, postData, httpOptions).subscribe(response => {

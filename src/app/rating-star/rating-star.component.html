@@ -1,13 +1,19 @@
-<div>
-    <span class="icon" *ngFor="let s of maxItem">
+<div id="{{'star_' + idParam}}" *ngIf='vocAllStar === true'>
+    <span class="icon" *ngFor="let s of maxItem, let i = index">
     <i [ngClass]=" s <= this.ratedCount ? 'filled' :'' " class="fa fa-star" aria-hidden="true"
       (click)="toggleRating(s)"></i>
   </span>
 </div>
 
-<!-- <div *ngIf="isRating === false">
-    <span class="icon" *ngFor="let s of maxItem">{{s}}
-    <i [ngClass]=" s <= this.ratedCount ? 'filled' :'' " class="fa fa-times-rectangle" aria-hidden="true"
-      (click)="toggleRating(s)"></i>
-  </span>
-</div> -->
+<div id="{{'btn_' + idParam}}" *ngIf='vocAllStar === false'>
+    <table>
+        <tr>
+            <span *ngFor="let s of maxItem, let i = index">
+        <td>
+          <button [ngClass]="s === this.ratedCount ? 'boxFilled' : '' " class="btn btn-rating"
+            name="{{'btnFeedback' + s}}" (click)="toggleRating(s)">{{i+1}}</button>
+        </td>
+      </span>
+        </tr>
+    </table>
+</div>

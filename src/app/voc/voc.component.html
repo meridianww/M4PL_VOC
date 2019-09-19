@@ -1,5 +1,5 @@
 <div class="size">
-    <form [formGroup]="voc">
+    <form>
         <div class="header">
             <h2 class="header-survey"> {{showTitle}}
             </h2>
@@ -44,6 +44,8 @@
                 </div>
             </div>
         </div>
+        <mat-progress-spinner mode="indeterminate" class="loader" [diameter]="80" *ngIf="enableSpinner">
+        </mat-progress-spinner>
         <div *ngIf="dynamicOperation">
             <div *ngFor="let item of tempVoiceList; let i=index;">
                 <div *ngIf="item.QuestionTypeIdName === 'Yes/No' && currentSelectedQuestion === i">
@@ -52,16 +54,22 @@
                             <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="margin-left: 27px;">
+                            {{item.QuestionDescription}}
+                        </div>
+                    </div>
                     <br>
-
                     <label>
-                        <input type="radio" value="item.AgreeTextId" formControlName="rdrSelection">
+                        <input type="radio" [value]="item.AgreeTextId" [(ngModel)]="item.SelectedAnswer"
+                            name="{{'rdrSelection' + i}}" (change)="onDynamicRadioChange(i, $event)">&nbsp;
                         <span>{{item.AgreeText}}</span>
                     </label>
                     <label>
-                        <input type="radio" value="item.DisAgreeTextId" formControlName="rdrSelection"
-                            class="radio-margin">
-                        <span> {{item.DisAgreeText}}</span>
+                        <input type="radio" [value]="item.DisAgreeTextId" name="{{'rdrSelection' + i}}"
+                            class="radio-margin" (change)="onDynamicRadioChange(i, $event)"
+                            [(ngModel)]="item.SelectedAnswer">&nbsp;
+                        <span>{{item.DisAgreeText}}</span>
                     </label>
                 </div>
                 <div *ngIf="item.QuestionTypeIdName === 'Range' && currentSelectedQuestion === i">
@@ -70,30 +78,34 @@
                             <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="margin-left: 27px;">
+                            {{item.QuestionDescription}}
+                        </div>
+                    </div>
                     <br>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <app-rating-star [max]='item.EndRange' (onRating)=onRating($event)>
+                            <app-rating-star [max]='item.EndRange' [idParam]='item.QuestionId' [vocAllStar]='vocAllStar' (onRating)="onRating($event,item.QuestionId)">
                             </app-rating-star>
                         </div>
-                    </div>
-                    <div class="row" *ngIf="item.vocAllStar === false">
-                        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <app-rating-star [max]='item.EndRange' isRating="false" (onRating)=onRating($event)>
-                            </app-rating-star>
-                        </div> -->
                     </div>
                 </div>
                 <div *ngIf="item.QuestionTypeIdName === 'Key-In' && currentSelectedQuestion === i">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 ">
                             <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="margin-left: 27px;">
+                            {{item.QuestionDescription}}
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <textarea matInput formControlName="improvements" rows="5"></textarea>
+                            <textarea name="{{'txtArea' + i}}" [(ngModel)]="item.SelectedAnswer" rows="5"></textarea>
                         </div>
                     </div>
                 </div>
@@ -109,7 +121,7 @@
             <br>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <textarea matInput formControlName="userFeedback" rows="5"></textarea>
+                    <textarea name="feedback" [(ngModel)]="feedback" rows="5"></textarea>
                 </div>
             </div>
         </div>
@@ -134,9 +146,8 @@
         <br>
         <br>
         <div class="row" *ngIf="butonGroup">
-
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 prog-bar">
-                <mat-progress-bar mode="Determinate" [value]="progressbarValue" class="pull-right">
+                <mat-progress-bar mode="determinate" [value]="progressbarValue" class="pull-right">
                 </mat-progress-bar>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -146,8 +157,11 @@
         </div>
         <div class="row" *ngIf="noInformation">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="blue-panel">NO SURVEYS AVAILABLE</div>
                 <div class="no-information">
-                    <b>No Survey Available</b>
+                    <b> <span class="thankTrying">Thank you for trying!</span> Unfortunately, there are no surveys
+                        available for you at this time. Don't worry. We are adding in new surveys all the time. Please
+                        check back later for more survey opportunities. We appreciate your time. </b>
                 </div>
             </div>
         </div>

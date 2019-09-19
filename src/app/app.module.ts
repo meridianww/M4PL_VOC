@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VocComponent } from './voc/voc.component'; 
+import { VocComponent } from './voc/voc.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {
@@ -31,7 +31,7 @@ import {
 } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
-import { RatingStarComponent } from './rating-star/rating-star.component'; 
+import { RatingStarComponent } from './rating-star/rating-star.component';
 import { VOCService } from './voc/voc.service';
 import { HttpWrapper } from './utility/httpWrapper';
 
@@ -71,7 +71,7 @@ import { HttpWrapper } from './utility/httpWrapper';
     MatButtonModule,
     MatProgressBarModule,
     MatRadioModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
   ],
   providers: [
     HttpWrapper,

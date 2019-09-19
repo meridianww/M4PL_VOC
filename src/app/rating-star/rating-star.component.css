@@ -13,3 +13,12 @@
 .filled {
     color: #006dcc;
 }
+
+.boxFilled {
+    background: #006dcc;
+    color: #fff;
+}
+
+button.btn-rating {
+    margin: 5px;
+}

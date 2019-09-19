@@ -7,3 +7,105 @@
     padding-right: 20%;
     padding-top: 8%;
 }
+
+.high-rating {
+    color: green;
+    font-weight: bold;
+}
+
+.btn-rating {
+    background-color: white;
+    border: 1px solid gray;
+    padding: 2px 30px;
+}
+
+.btn-next {
+    background-color: #4b8efa;
+    color: white;
+    padding: 6px 23px;
+    margin-left: 10px;
+}
+
+.btn-back {
+    background-color: white;
+    color: black;
+    padding: 6px 23px;
+    border: 1px solid gray;
+}
+
+textarea {
+    background-color: #f5f5f5;
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    border-bottom: 1px solid #4b8efa;
+}
+
+.mat-progress-bar {
+    height: 20px;
+}
+
+.prog-bar {
+    padding: 10px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .header-survey {
+        font-size: 24px !important;
+    }
+}
+
+
+/* .btn:focus {
+    background: #4b8efa;
+} */
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .header-survey {
+        font-size: 22px !important;
+    }
+    .btn-blue,
+    .btn-rating {
+        padding: 5px 20px;
+    }
+    .btn-next,
+    .btn-back {
+        padding: 3px 12px;
+    }
+    .prog-bar {
+        top: -25px;
+    }
+    .table-rating {
+        overflow-x: scroll;
+    }
+    .mat-progress-bar {
+        height: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .header-survey {
+        font-size: 22px !important;
+    }
+    .btn-blue,
+    .btn-next,
+    .btn-back,
+    .btn-rating {
+        padding: 5px 22px !important;
+    }
+    .table-rating {
+        overflow-x: scroll;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+    .btn-blue,
+    .btn-next,
+    .btn-back,
+    .btn-rating {
+        padding: 5px 30px !important;
+    }
+    .prog-bar {
+        padding: 8px;
+    }
+}
