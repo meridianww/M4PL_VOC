@@ -5,9 +5,6 @@
             </h2>
         </div>
         <div class="row">
-            <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-12 center txt-red">
-                This is a preview, NO results will be recorded.
-            </div> -->
             <br>
         </div>
         <br>
@@ -51,7 +48,8 @@
                 <div *ngIf="item.QuestionTypeIdName === 'Yes/No' && currentSelectedQuestion === i">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
+                            <b class="single-line"><span class="txt-red">Q{{i+1}}.</span>&nbsp;<div>{{item.Title}}</div>
+                            </b>
                         </div>
                     </div>
                     <div class="row">
@@ -77,7 +75,8 @@
                 <div *ngIf="item.QuestionTypeIdName === 'Range' && currentSelectedQuestion === i">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                            <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
+                            <b class="single-line"><span class="txt-red">Q{{i+1}}.</span>&nbsp;<div>{{item.Title}}</div>
+                            </b>
                         </div>
                     </div>
                     <div class="row">
@@ -95,8 +94,9 @@
                 </div>
                 <div *ngIf="item.QuestionTypeIdName === 'Key-In' && currentSelectedQuestion === i">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 ">
-                            <b><span class="txt-red">Q{{i+1}}.</span> {{item.Title}}</b>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <b class="single-line"><span class="txt-red">Q{{i+1}}.</span>&nbsp;<div>{{item.Title}}</div>
+                            </b>
                         </div>
                     </div>
                     <div class="row">
@@ -116,7 +116,8 @@
         <div *ngIf="feddbackForm">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <b><span class="txt-red">Q{{currentSelectedQuestion + 1}}.</span> Do you have any comments?
+                    <b class="single-line"><span class="txt-red">Q{{currentSelectedQuestion+1}}.</span>&nbsp;<div> Do
+                            you have any comments?</div>
                     </b>
                 </div>
             </div>

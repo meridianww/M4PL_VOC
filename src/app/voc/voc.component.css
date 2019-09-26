@@ -189,3 +189,7 @@ textarea {
 .right-aligned {
     text-align: right;
 }
+
+.single-line {
+    display: inline-flex;
+}
