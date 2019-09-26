@@ -1,9 +1,8 @@
 .icon {
-    display: inline-block;
-    margin-right: 3px;
+    /* display: inline-block; */
     cursor: pointer;
     color: #ccc;
-    width: 7%;
+    /* width: 7%; */
 }
 
 .icon:hover {
@@ -20,5 +19,52 @@
 }
 
 button.btn-rating {
-    margin: 5px;
+    margin-right: 5px;
+}
+
+@media (max-width: 1399px) {
+    button.btn-rating {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+    }
+}
+
+.btn-rating {
+    padding: 2px;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 600px) {
+    .btn-rating {
+        padding: 6px;
+    }
+}
+
+@media (min-width: 800px) and (max-width:1000px) {
+    .btn-rating {
+        padding: 6px 10px;
+    }
+}
+
+@media (min-width: 1000px) and (max-width:1300px) {
+    .btn-rating {
+        padding: 6px 21px;
+    }
+}
+
+@media (min-width: 1300px) and (max-width:1600px) {
+    .btn-rating {
+        padding: 6px 25px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .btn-rating {
+        padding: 6px 38px;
+    }
+}
+
+.flex-container>span.btnRatingMoreThan10+button {
+    width: 83%;
 }

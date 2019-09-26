@@ -35,6 +35,8 @@ export class RatingStarComponent {
         this.ratedCount = parseInt(rating);
       }
     }
+
+  
   }
   toggleRating(s: number) {
     this.ratedCount = s;

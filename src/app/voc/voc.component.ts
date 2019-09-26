@@ -31,7 +31,8 @@ export class VocComponent implements OnInit {
   public feedback = '';
   public arr = [];
   public i = 0;
-  public EntityTypeId: number;
+  public entityTypeId: number;
+  public progressBarVal = 0;
 
   @HostListener('window:unload', ['$event'])
   unloadHandler(event) {
@@ -81,7 +82,7 @@ export class VocComponent implements OnInit {
         this.showTitle = res.Results[0].SurveyTitle;
         this.surveyId = res.Results[0].SurveyId;
         this.vocAllStar = res.Results[0].VocAllStar;
-        this.EntityTypeId = res.Results[0].jobId;
+        this.entityTypeId = res.Results[0].jobId;
       }
 
     }, fail = (err) => {
@@ -95,12 +96,12 @@ export class VocComponent implements OnInit {
   }
   // Start The Survey
   onStart() {
-    this.createUser();
     if (this.currentSelectedQuestion === 0) {
       this.start = false;
     }
     this.thankYouPage = false;
     this.getVOCRecords(this.jobId);
+    this.createUser();
   }
   noInformationCondition() {
     this.noInformation = true;
@@ -114,6 +115,7 @@ export class VocComponent implements OnInit {
   onBack() {
     if (this.currentSelectedQuestion > 0) {
       this.progressbarValue = this.progressbarValue - 100 / (this.tempVoiceList.length);
+      this.progressBarVal = Math.round(this.progressbarValue);
       if (this.buttonName === 'Submit') {
         this.buttonName = 'Next';
       }
@@ -140,6 +142,7 @@ export class VocComponent implements OnInit {
           break;
       }
       this.progressbarValue = this.progressbarValue + 100 / (this.tempVoiceList.length);
+      this.progressBarVal = Math.round(this.progressbarValue);
 
       if (this.tempVoiceList.length > this.currentSelectedQuestion) {
         this.start = false;
@@ -168,7 +171,7 @@ export class VocComponent implements OnInit {
       Age: null,
       GenderId: null,
       // tslint:disable-next-line: radix
-      EntityTypeId: parseInt(this.jobId),
+      EntityTypeId: this.entityTypeId,
       EntityType: 'Job',
       UserId: null,
       SurveyId: null,
@@ -189,7 +192,7 @@ export class VocComponent implements OnInit {
   createJobSurvey() {
     this.enableSpinner = true;
     const postData = {
-      JobId: 1,
+      JobId: this.entityTypeId,
       SurveyId: this.surveyId,
       SurveyTitle: this.showTitle,
       SurveyUserId: this.userList.Id,

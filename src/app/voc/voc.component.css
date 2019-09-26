@@ -185,3 +185,7 @@ textarea {
     position: absolute !important;
     right: 50%;
 }
+
+.right-aligned {
+    text-align: right;
+}
