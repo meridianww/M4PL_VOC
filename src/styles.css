@@ -94,7 +94,7 @@ textarea {
         padding: 5px 22px !important;
     } */
     .table-rating {
-        overflow-x: scroll;
+        overflow-x: hidden;
     }
 }
 
